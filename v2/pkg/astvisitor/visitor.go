@@ -103,6 +103,13 @@ func NewWalker(ancestorSize int) Walker {
 	}
 }
 
+func (w *Walker) Reset() {
+	w.Ancestors = w.Ancestors[:0]
+	w.Path = w.Path[:0]
+	w.TypeDefinitions = w.TypeDefinitions[:0]
+	w.deferred = w.deferred[:0]
+}
+
 type (
 	// EnterOperationDefinitionVisitor is the callback when the walker enters an operation definition
 	EnterOperationDefinitionVisitor interface {

@@ -96,6 +96,20 @@ func NewPlanner(config Configuration) (*Planner, error) {
 	return p, nil
 }
 
+func (p *Planner) Reset() {
+	p.configurationWalker.Reset()
+	p.configurationVisitor.reset()
+	p.nodeSelectionsWalker.Reset()
+	p.nodeSelectionsVisitor.reset()
+	p.planningWalker.Reset()
+	p.planningVisitor.reset()
+	p.prepareOperationWalker.Reset()
+}
+
+func (p *Planner) Config() Configuration {
+	return p.config
+}
+
 func (p *Planner) SetConfig(config Configuration) {
 	p.config = config
 }
